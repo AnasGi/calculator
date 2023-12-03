@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/AnasGi/calculator.git/static/css/main.c8cd3f6f.css",
+    "main.js": "/AnasGi/calculator.git/static/js/main.179b03b7.js",
+    "static/js/787.5f81c7f8.chunk.js": "/AnasGi/calculator.git/static/js/787.5f81c7f8.chunk.js",
+    "index.html": "/AnasGi/calculator.git/index.html",
+    "main.c8cd3f6f.css.map": "/AnasGi/calculator.git/static/css/main.c8cd3f6f.css.map",
+    "main.179b03b7.js.map": "/AnasGi/calculator.git/static/js/main.179b03b7.js.map",
+    "787.5f81c7f8.chunk.js.map": "/AnasGi/calculator.git/static/js/787.5f81c7f8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8cd3f6f.css",
+    "static/js/main.179b03b7.js"
+  ]
+}
