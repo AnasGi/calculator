@@ -43,7 +43,7 @@ export default function Proj(){
                         setRes(parseInt(parseInt(nb) * parseInt(nb2)))
                     }
                     else{
-                        setRes(parseInt(parseInt(nb) / parseInt(nb2)))
+                        nb2!=="0"?setRes(parseInt(parseInt(nb) / parseInt(nb2))):setRes('Impossible');setTimeout(()=>window.location.reload(false),1000)
                     }
                     setNb2('0') //to initialise nbr2 for the next operation
                     setNb('0') //to bring the oparations input to 0
