@@ -9,7 +9,7 @@ export default function Proj(){
 
     let [nb , setNb] = useState("0")
     const [nb2 , setNb2] = useState("0")
-    const [res , setRes] = useState(0.0)
+    let [res , setRes] = useState(0)
     const [opr , setOpr] = useState("")
     const [b,setB] = useState(false)
     
@@ -22,35 +22,38 @@ export default function Proj(){
 
             <div className="numbers_container">
                 {
-                    numbers.map(nbres=><input type="number" onClick={(e)=>{b===false?setNb(nb+e.target.value):setNb2(nb2+e.target.value)}} readOnly value={nbres}/>)
+                    numbers.map(nbres=><input key={nbres} type="number" onClick={(e)=>{b===false?setNb(nb+e.target.value):setNb2(nb2+e.target.value)}} readOnly value={nbres}/>)
                     // if b === false that means that we didn't click on an oparator so we are just gonna take nb else we gonna take the second number nb2
                 }
                 
                 {
-                    operators.map(op=><input type="text" className="op" onClick={(e)=>{setOpr(e.target.value) ; setB(true) ; res!==0?setNb(parseFloat(res)):setNb(nb)}} readOnly value={op}/>)
+                    operators.map(op=><input key={op} type="text" className="op" onClick={(e)=>{setOpr(e.target.value) ; setB(true) ; res!==0?setNb(parseFloat(res)):setNb(nb)}} readOnly value={op}/>)
                     // res!==0?setNb(parseFloat(res)):setNb(nb)} means if we want to do a second operation with the first result we can 
                 }
                 
                 <input type="text" id="res" readOnly value={"="} onClick={()=>{
-
-                    if (opr === "+"){
-                        setRes(parseFloat(parseFloat(nb) + parseFloat(nb2)))
+                    if (opr === ""){
+                        setRes(parseFloat(nb))
+                    }
+                    else if (opr === "+"){
+                        setRes(parseFloat(nb) + parseFloat(nb2))
                     }
                     else if (opr === '-'){
-                        setRes(parseFloat(parseFloat(nb) - parseFloat(nb2)))
+                        setRes((parseFloat(nb) - parseFloat(nb2)))
                     }
                     else if (opr === '*'){
-                        setRes(parseFloat(parseFloat(nb) * parseFloat(nb2)))
+                        setRes((parseFloat(nb) * parseFloat(nb2)))
                     }
                     else{
-                        if(nb2 !== 0){
-                            setRes(parseFloat(parseFloat(nb) / parseFloat(nb2)))
-                        }
-                        else{
-                            setRes('Impossible');
+                        if(parseFloat(nb2) === 0.0){
+                            setRes('Impossible')
                             setTimeout(()=>window.location.reload(false),1000)
                         }
+                        else{
+                            setRes((parseFloat(nb) / parseFloat(nb2)))
+                        }
                     }
+
                     setNb2('0') //to initialise nbr2 for the next operation
                     setNb('0') //to bring the oparations input to 0
                     setOpr(''); //to initialise the operator for the next operation
@@ -59,7 +62,7 @@ export default function Proj(){
                 
             </div>
             <div>
-                <input type="text" className="show" disabled value={parseFloat(res)} />
+                <input type="text" className="show" disabled value={res} />
             </div>
             <div className="reset_cont">
                 <button onClick={()=>{window.location.reload(false)}}>Reset</button>
